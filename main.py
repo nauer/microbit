@@ -1,0 +1,25 @@
+def on_button_pressed_a():
+    MuseOLED.clear()
+    MuseOLED.write_string_new_line("Temp: ")
+    MuseOLED.write_string(convert_to_text(input.temperature()))
+    basic.pause(5000)
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_gesture_shake():
+    MuseOLED.clear()
+    MuseOLED.write_string("Hey! Nicht schütteln ")
+    MuseOLED.new_line()
+    MuseOLED.write_string("!!!BITTE!!!")
+    basic.pause(2000)
+    MuseOLED.clear()
+    MuseOLED.write_string(convert_to_text(input.acceleration(Dimension.X)))
+    MuseOLED.write_string(convert_to_text(input.acceleration(Dimension.Y)))
+    MuseOLED.write_string(convert_to_text(input.acceleration(Dimension.Z)))
+    MuseOLED.write_string(convert_to_text(input.acceleration(Dimension.STRENGTH)))
+    basic.pause(2000)
+input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+
+MuseOLED.init()
+MuseOLED.clear()
+MuseOLED.write_string_new_line("Hello!")
+basic.pause(1000)
